@@ -35,8 +35,10 @@ func LoadConfig(configPath string) error {
 	if Config.Log.MaxAge != 0 {
 		LogMaxAge = Config.Log.MaxAge
 	}
-	if Config.Sqlite.DBPath != "" {
-		SqliteDBPath = Config.Sqlite.DBPath
+	if Config.Sqlite.DSN != "" {
+		SqliteDSN = Config.Sqlite.DSN
+	}else{
+		return fmt.Errorf("sqlite DSN is not set in the configuration file")
 	}
 	return nil
 }

@@ -16,4 +16,4 @@ log:
 
 sqlite:
   # Path to the SQLite database file
-  db_path: "data/database.db"
+  dsn: "/path/to/your/database.db"

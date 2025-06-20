@@ -31,7 +31,7 @@ var (
 	// api
 	ApiAuth string
 	// sqlite
-	SqliteDBPath = filepath.Join(AbsPath, "sqlite.db") // sqlite database path
+	SqliteDSN = "" // sqlite database path
 	// default config file path
 	DefaultConfigPath = filepath.Join(AbsPath, "config.yaml")
 )
@@ -48,7 +48,7 @@ var Config struct {
 		MaxAge     int `yaml:"max_age"`
 	} `yaml:"log"`
 	Sqlite struct {
-		DBPath string `yaml:"db_path"`
+		DSN string `yaml:"dsn"`
 	}
 }
 
