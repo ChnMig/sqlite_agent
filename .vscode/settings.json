@@ -1,0 +1,5 @@
+{
+    "gopls": {
+        "formatting.local": "sqlite-agent"  // Value from go.mod > model
+    }
+}
