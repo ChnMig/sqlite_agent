@@ -30,6 +30,8 @@ var (
 	LogModelDev   = "dev"                                                  // dev model
 	// api
 	ApiAuth string
+	// sqlite
+	SqliteDBPath = filepath.Join(AbsPath, "sqlite.db") // sqlite database path
 	// default config file path
 	DefaultConfigPath = filepath.Join(AbsPath, "config.yaml")
 )
@@ -45,6 +47,9 @@ var Config struct {
 		MaxBackups int `yaml:"max_backups"`
 		MaxAge     int `yaml:"max_age"`
 	} `yaml:"log"`
+	Sqlite struct {
+		DBPath string `yaml:"db_path"`
+	}
 }
 
 // InitConfig initializes the configuration

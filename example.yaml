@@ -13,3 +13,7 @@ log:
   max_backups: 3
   # Maximum age of log files in days
   max_age: 30
+
+sqlite:
+  # Path to the SQLite database file
+  db_path: "data/database.db"
