@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"time"
 
 	pathtool "sqlite-agent/util/path-tool"
 )
@@ -13,7 +12,7 @@ import (
 // These configurations are usually generic
 var (
 	// listen
-	ListenPort = 8080 // api listen port
+	ListenPort = 10086 // api listen port
 	// run model
 	RunModelKey      = "model"
 	RunModel         = ""
@@ -29,40 +28,26 @@ var (
 	LogMaxBackups = 3                                                      // backups
 	LogMaxAge     = 30                                                     // days
 	LogModelDev   = "dev"                                                  // dev model
+	// api
+	ApiAuth string
+	// default config file path
+	DefaultConfigPath = filepath.Join(AbsPath, "config.yaml")
 )
 
-// These configurations need to be modified as needed
-var (
-	// jWT
-	JWTKey        = "CvXPiv34e2474LC5Xj7IP" // TODO 务必在部署前对 key 进行修改
-	JWTExpiration = time.Hour * 12
-)
+// 修改配置结构以支持分层的 YAML 配置
+var Config struct {
+	Server struct {
+		ListenPort int    `yaml:"listen_port"`
+		ApiAuth    string `yaml:"api_auth"`
+	} `yaml:"server"`
+	Log struct {
+		MaxSize    int `yaml:"max_size"`
+		MaxBackups int `yaml:"max_backups"`
+		MaxAge     int `yaml:"max_age"`
+	} `yaml:"log"`
+}
 
-// redis
-var (
-	RedisHost     = "127.0.0.1:6379"        // TODO 修改为自己的 redis 地址
-	RedisPassword = "izpXvn894uW2HFbyP5OGr" // TODO 修改为自己的 redis 密码
-)
-
-// pgsql
-var (
-	PgsqlDSN = "host=127.0.0.1 user=postgres password=kL81xnDWo221FHFRX8GnP dbname=server port=5432 sslmode=disable TimeZone=Asia/Shanghai" // TODO 修改为自己的 pgsql 配置
-)
-
-// admin config
-var (
-	AdminPassword = "123456"                // TODO 管理员密码, 务必修改为自己的密码
-	PWDSalt       = "rHECMvW3el1zhpdzgx9dY" // TODO 数据库存储密码时的盐, 务必重新生成, 且不可泄露, 不可更改
-)
-
-// page config
-var (
-	DefaultPageSize = 20 // default page size
-	DefaultPage     = 1  // default page
-	CancelPageSize  = -1 // cancel page size
-	CancelPage      = -1 // cancel page
-)
-
+// InitConfig initializes the configuration
 func init() {
 	pathtool.CreateDir(LogDir)
 }
