@@ -16,7 +16,7 @@ https://github.com/mattn/go-sqlite3?tab=readme-ov-file#cross-compile
 
 ### mac(ARM)
 
-`CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ GOARCH=arm64 GOOS=darwin CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags -static"`
+`CGO_ENABLED=1 go build`
 
 ### win
 
