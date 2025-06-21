@@ -50,4 +50,4 @@ Please refer to [doc/api.md](./doc/api.md) for the API documentation.
 ## QA
 
 - You must modify the api_auth in the configuration file to prevent abuse of the interface!!!
-- In release, I will provide the standard win/mac/linux version, but I cannot test the effectiveness of the win platform!!!
+- In release, I will provide the standard mac/linux version, but I cannot test the effectiveness of the win platform!!!

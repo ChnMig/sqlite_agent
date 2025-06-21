@@ -16,7 +16,7 @@
 
 ### mac(ARM)
 
-`CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ GOARCH=arm64 GOOS=darwin CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags -static"`
+`CGO_ENABLED=1 go build`
 
 ### win
 
@@ -52,4 +52,4 @@ Usage of ./sqlite-agent:
 ## QA
 
 - 请务必修改配置文件中的 api_auth，防止接口被滥用！！！
-- 在 release 中, 我会提供标准的 win/mac/linux 版本, 但是无法测试 win 平台的效果！！！
+- 在 release 中, 我会提供标准的 mac/linux 版本, 但是无法测试 win 平台的效果！！！
