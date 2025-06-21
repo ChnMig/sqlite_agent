@@ -5,5 +5,8 @@ import (
 )
 
 func RegisterRoutes(router *gin.RouterGroup) {
-	router.POST("/sqlite/execute", ExecuteSQL)
+	router.POST("/insert", ExecuteInsert)
+	router.POST("/delete", ExecuteDelete)
+	router.POST("/update", ExecuteUpdate)
+	router.POST("/query", ExecuteQuery)
 }

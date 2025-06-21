@@ -20,8 +20,8 @@ func InitApi() *gin.Engine {
 	// api-v1
 	v1 := router.Group("/api/v1")
 	{
-		info.RegisterRoutes(v1)
-		exec.RegisterRoutes(v1)
+		info.RegisterRoutes(v1.Group("/info"))
+		exec.RegisterRoutes(v1.Group("/exec"))
 	}
 	return router
 }

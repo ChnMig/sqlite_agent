@@ -5,5 +5,5 @@ import (
 )
 
 func RegisterRoutes(router *gin.RouterGroup) {
-	router.GET("/sqlite/status", GetSQLiteStatus)
+	router.GET("/status", GetSQLiteStatus)
 }
