@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"sqlite-agent/api"
+	"sqlite-agent/api/app"
 	"sqlite-agent/config"
 	"sqlite-agent/util/log"
 
@@ -34,7 +34,7 @@ func main() {
 
 	log.SetLogger()
 
-	r := api.InitApi()
+	r := app.InitApi()
 	go r.Run(fmt.Sprintf(":%d", config.ListenPort))
 
 	// 监听停止信号
