@@ -31,6 +31,8 @@ https://github.com/mattn/go-sqlite3?tab=readme-ov-file#cross-compile
 ``` bash
 ./sqlite-agent --help   
 Usage of ./sqlite-agent:
+ -check
+        Check DB connection and exit
   -config string
         Path to the configuration file
   -dev

@@ -33,10 +33,12 @@
 ```bash
 ./sqlite-agent --help   
 Usage of ./sqlite-agent:
+ -check
+        Check DB connection and exit
   -config string
-        配置文件路径
+        Path to the configuration file
   -dev
-        以开发模式运行
+        Run in development mode
 ```
 
 ## 配置
