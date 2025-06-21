@@ -10,11 +10,17 @@
 
 参考：https://github.com/mattn/go-sqlite3?tab=readme-ov-file#cross-compile
 
-### Linux 构建命令
+### linux
 
-```
-CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ GOARCH=amd64 GOOS=linux CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags -static"
-```
+`CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ GOARCH=amd64 GOOS=linux CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags -static"`
+
+### mac(ARM)
+
+`CC=x86_64-linux-musl-gcc CXX=x86_64-linux-musl-g++ GOARCH=arm64 GOOS=darwin CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags -static"`
+
+### win
+
+`CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ GOARCH=amd64 GOOS=windows CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags -static"`
 
 ## 运行
 
@@ -40,3 +46,4 @@ Usage of ./sqlite-agent:
 ## QA
 
 - 请务必修改配置文件中的 api_auth，防止接口被滥用！！！
+- 在 release 中, 我会提供标准的 win/mac/linux 版本, 但是无法测试 win 平台的效果！！！
