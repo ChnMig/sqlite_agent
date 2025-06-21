@@ -3,6 +3,7 @@ package info
 import (
 	"github.com/gin-gonic/gin"
 
+	"sqlite-agent/api/response"
 	"sqlite-agent/config"
 	"sqlite-agent/db"
 )
@@ -25,7 +26,7 @@ func GetSQLiteStatus(c *gin.Context) {
 
 	if db == nil {
 		status.Error = "Failed to connect to SQLite"
-		c.JSON(500, status)
+		response.ReturnErrorWithData(c, response.INTERNAL, status)
 		return
 	}
 
@@ -33,9 +34,9 @@ func GetSQLiteStatus(c *gin.Context) {
 	_, err := db.Exec("SELECT 1")
 	if err != nil {
 		status.Error = err.Error()
-		c.JSON(500, status)
+		response.ReturnErrorWithData(c, response.INTERNAL, status)
 		return
 	}
 
-	c.JSON(200, status)
+	response.ReturnData(c, status)
 }

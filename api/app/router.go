@@ -18,7 +18,7 @@ func InitApi() *gin.Engine {
 	// Add consent cross-domain middleware
 	router.Use(middleware.CorssDomainHandler())
 	// api-v1
-	v1 := router.Group("/api/v1")
+	v1 := router.Group("/api/v1", middleware.AuthMiddleware())
 	{
 		info.RegisterRoutes(v1.Group("/info"))
 		exec.RegisterRoutes(v1.Group("/exec"))

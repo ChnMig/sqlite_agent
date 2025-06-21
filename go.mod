@@ -6,6 +6,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0
 	github.com/gin-gonic/gin v1.10.1
 	github.com/goccy/go-yaml v1.18.0
+	github.com/mattn/go-sqlite3 v1.14.28
 	github.com/sony/sonyflake v1.2.1
 	go.uber.org/zap v1.27.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1

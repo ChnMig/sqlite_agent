@@ -16,4 +16,4 @@ log:
 
 sqlite:
   # Path to the SQLite database file
-  dsn: "/path/to/your/database.db"
+  dsn: "/Users/chenming/Desktop/my_database.db"

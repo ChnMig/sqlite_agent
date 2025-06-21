@@ -13,8 +13,8 @@ type ExecuteSQLRequest struct {
 	SQL string `json:"sql" binding:"required"`
 }
 
-// ExecuteInsert handles SQL INSERT operations.
-func ExecuteInsert(c *gin.Context) {
+// Execute handles SQL operations.
+func Execute(c *gin.Context) {
 	var req ExecuteSQLRequest
 	if !middleware.CheckParam(&req, c) {
 		return
@@ -33,53 +33,7 @@ func ExecuteInsert(c *gin.Context) {
 	}
 
 	rowsAffected, _ := result.RowsAffected()
-	response.ReturnData(c, gin.H{"rows_affected": rowsAffected})
-}
-
-// ExecuteDelete handles SQL DELETE operations.
-func ExecuteDelete(c *gin.Context) {
-	var req ExecuteSQLRequest
-	if !middleware.CheckParam(&req, c) {
-		return
-	}
-
-	db := db.GetClient()
-	if db == nil {
-		response.ReturnError(c, response.INTERNAL, "Database connection not initialized")
-		return
-	}
-
-	result, err := db.Exec(req.SQL)
-	if err != nil {
-		response.ReturnError(c, response.INTERNAL, "Failed to execute SQL: "+err.Error())
-		return
-	}
-
-	rowsAffected, _ := result.RowsAffected()
-	response.ReturnData(c, gin.H{"rows_affected": rowsAffected})
-}
-
-// ExecuteUpdate handles SQL UPDATE operations.
-func ExecuteUpdate(c *gin.Context) {
-	var req ExecuteSQLRequest
-	if !middleware.CheckParam(&req, c) {
-		return
-	}
-
-	db := db.GetClient()
-	if db == nil {
-		response.ReturnError(c, response.INTERNAL, "Database connection not initialized")
-		return
-	}
-
-	result, err := db.Exec(req.SQL)
-	if err != nil {
-		response.ReturnError(c, response.INTERNAL, "Failed to execute SQL: "+err.Error())
-		return
-	}
-
-	rowsAffected, _ := result.RowsAffected()
-	response.ReturnData(c, gin.H{"rows_affected": rowsAffected})
+	response.ReturnData(c, rowsAffected)
 }
 
 // ExecuteQuery handles SQL SELECT operations.
