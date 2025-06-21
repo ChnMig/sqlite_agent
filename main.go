@@ -19,12 +19,10 @@ func main() {
 	var (
 		configPath string
 		dev        bool
-		check      bool // 新增 check 参数
 	)
 
 	flag.StringVar(&configPath, "config", "", "Path to the configuration file")
 	flag.BoolVar(&dev, "dev", false, "Run in development mode")
-	flag.BoolVar(&check, "check", false, "Check DB connection and exit") // 新增 check 参数
 	flag.Parse()
 
 	if dev {
@@ -37,16 +35,14 @@ func main() {
 		os.Exit(1)
 	}
 
-	if check {
-		config.RunModel = config.RunModelDevValue
-		log.SetLogger()
-		if err := db.Init(); err != nil {
-			fmt.Fprintf(os.Stderr, "DB connection check failed: %v\n", err)
-			os.Exit(1)
-		}
-		fmt.Println("DB connection check succeeded")
-		return
+	// 启动时强制检查数据库连接
+	config.RunModel = config.RunModelDevValue // 保持与原 check 行为一致（如需可调整）
+	log.SetLogger()
+	if err := db.Init(); err != nil {
+		fmt.Fprintf(os.Stderr, "DB connection check failed: %v\n", err)
+		os.Exit(1)
 	}
+	fmt.Println("DB connection check succeeded")
 
 	log.SetLogger()
 
