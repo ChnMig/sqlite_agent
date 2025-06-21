@@ -41,6 +41,10 @@ Usage of ./sqlite-agent:
 
 Please refer to example.yaml and check the comments to understand what configuration means. It is simple 😉
 
+## api document
+
+Please refer to [doc/api.md](./doc/api.md) for the API documentation.
+
 ## QA
 
 - You must modify the api_auth in the configuration file to prevent abuse of the interface!!!

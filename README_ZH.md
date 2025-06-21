@@ -43,6 +43,10 @@ Usage of ./sqlite-agent:
 
 请参考 example.yaml，并查看注释以理解各配置项含义，配置简单明了。
 
+## API 文档
+
+请参考 [doc/api.md](./doc/api.md) 获取 API 文档。
+
 ## QA
 
 - 请务必修改配置文件中的 api_auth，防止接口被滥用！！！
