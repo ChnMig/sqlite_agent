@@ -1,9 +1,9 @@
-package info
+package exec
 
 import (
 	"github.com/gin-gonic/gin"
 )
 
 func RegisterRoutes(router *gin.RouterGroup) {
-	router.GET("/sqlite/status", GetSQLiteStatus)
+	router.POST("/sqlite/execute", ExecuteSQL)
 }

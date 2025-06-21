@@ -3,6 +3,9 @@ package app
 import (
 	"github.com/gin-gonic/gin"
 
+	"sqlite-agent/api/app/exec"
+	"sqlite-agent/api/app/info"
+
 	"sqlite-agent/api/middleware"
 )
 
@@ -15,8 +18,10 @@ func InitApi() *gin.Engine {
 	// Add consent cross-domain middleware
 	router.Use(middleware.CorssDomainHandler())
 	// api-v1
-	// v1 := router.Group("/api/v1")
-	// {
-	// }
+	v1 := router.Group("/api/v1")
+	{
+		info.RegisterRoutes(v1)
+		exec.RegisterRoutes(v1)
+	}
 	return router
 }
